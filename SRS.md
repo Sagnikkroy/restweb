@@ -8,7 +8,7 @@ This document defines the functional and non-functional requirements for develop
 
 ### 1.2 Scope
 The system will:
-- Provide an online presence for Stova Jaipur  
+- Provide an online presence for Stoa Jaipur  
 - Allow users to explore services, events, and menu  
 - Enable reservation booking  
 - Allow admin to manage reservations and events  
