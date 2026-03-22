@@ -85,7 +85,7 @@ const styles = `
   */
   .hero-arch {
   position: absolute;
-  top: -175px;   /* desktop */
+  top: -265px;   /* desktop */
   left: 0;
   width: 100%;
   height: auto;
@@ -268,7 +268,12 @@ const styles = `
   .events-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
   .event-card { background:var(--cream); overflow:hidden; transition:transform 0.4s ease, box-shadow 0.4s ease; cursor:pointer; }
   .event-card:hover { transform:translateY(-8px); box-shadow:0 20px 56px rgba(44,24,16,0.12); }
-  .event-card-img-wrap { overflow:hidden; height:240px; transition:transform 0.6s; }
+  .event-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;   /* ✅ THIS is what you want */
+  overflow: hidden;
+}
   .event-card:hover .event-card-img-wrap { transform:scale(1.05); }
   .event-card-body { padding:26px; }
   .event-date-badge {
@@ -513,17 +518,32 @@ const menuData = {
 };
 
 const events = [
-  { img: "/images/event-sundowner.jpg",   date: "Every Friday",  title: "Sundowner Sessions",   desc: "As dusk paints Jaipur gold, lose yourself in curated beats, signature cocktails, and ancient fort walls glowing amber." },
-  { img: "/images/event-supper-club.jpg", date: "Last Saturday", title: "Heritage Supper Club", desc: "An intimate multi-course journey through Rajputana flavours, reinterpreted by our culinary team. Reservation required." },
-  { img: "/images/event-art-pour.jpg",    date: "Monthly",       title: "Art & Pour Nights",    desc: "Local artists, live canvas, flowing wine. Witness Jaipur's creative spirit come alive beneath the arches of Dahmi Fort." },
+  {
+    video: "/images/event1.mp4",
+    date: "Every Friday",
+    title: "BollyTech Saturday",
+    desc: "As dusk paints Jaipur gold, lose yourself in curated beats, signature cocktails, and ancient fort walls glowing amber."
+  },
+  {
+    video: "/images/event2.mp4",
+    date: "Last Saturday",
+    title: "JTown Holi Madness",
+    desc: "Colors in the air, beats in the heart, and poolside madness all around.From Sunlit grooves to dance moments, your ultimate Holi memory begins here. With power-packed energy by DROPX, expect booming drops, vibrant chaos, and nonstop party feels all day long."
+  },
+  {
+    video: "/images/event3.mp4",
+    date: "Monthly",
+    title: "Saturday Shutdown",
+    desc: "Local artists, live canvas, flowing wine. Witness Jaipur's creative spirit come alive beneath the arches of Dahmi Fort."
+  },
 ];
 
 const galleryItems = [
-  { img: "/images/gallery-main-venue.jpg",   label: "Main Venue"      },
-  { img: "/images/gallery-interior.jpg",     label: "Interior Detail" },
-  { img: "/images/gallery-cocktail-bar.jpg", label: "Cocktail Bar"    },
-  { img: "/images/gallery-outdoor.jpg",      label: "Outdoor Seating" },
-  { img: "/images/gallery-night.jpg",        label: "Night Ambiance"  },
+  { img: "/images/stoa3.avif",   label: "Main Venue"      },
+  { img: "/images/stoa4.webp",     label: "Interior Detail" },
+  { img: "/images/stoa5.avif", label: "Cocktail Bar"    },
+  { img: "/images/stoa6.avif",      label: "Outdoor Seating" },
+  { img: "/images/stoa7.avif",        label: "Night Ambiance"  },
 ];
 
 const services = [
@@ -562,7 +582,9 @@ export default function StoaLanding() {
 
       {/* ── NAVBAR ── */}
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-        <a href="#home" className="nav-logo">STOA</a>
+        <a href="#home" className="nav-logo">
+  <img src="/stoalogo.svg" alt="Stoa" style={{ height: "48px", width: "auto", display: "block" }} />
+</a>
         <ul className="nav-links">
           {navLinks.map(({ label, href }) => (
             <li key={label}><a href={href}>{label}</a></li>
@@ -575,7 +597,7 @@ export default function StoaLanding() {
       <section className="hero" id="home">
 
         {/* Background photo */}
-        <img src="/images/stoaimg1.jpg" alt="Stoa Jaipur" className="hero-bg-img" />
+        <img src="/images/stoa1.avif" alt="Stoa Jaipur" className="hero-bg-img" />
 
         {/*
           ── ARCH SVG OVERLAY — THE FIX ──
@@ -605,8 +627,7 @@ export default function StoaLanding() {
         </div>
 
         <div className="hero-scroll">
-          <span>Discover</span>
-          <div className="scroll-line" />
+         
         </div>
       </section>
 
@@ -614,19 +635,19 @@ export default function StoaLanding() {
       <section className="about" id="about">
         <div className="about-images">
           <div className="about-img-main">
-            <img src="/images/about-main.jpg" alt="Stoa venue daytime" style={{width:"100%",height:"100%",objectFit:"cover"}} />
+            <img src="/images/stoaimg1.jpg" alt="Stoa venue daytime" style={{width:"100%",height:"100%",objectFit:"cover"}} />
           </div>
           <div className="about-img-secondary">
-            <img src="/images/about-interior.jpg" alt="Stoa interior detail" style={{width:"100%",height:"100%",objectFit:"cover"}} />
+            <img src="/images/stoa2.avif" alt="Stoa interior detail" style={{width:"100%",height:"100%",objectFit:"cover"}} />
           </div>
           <div className="about-stat">
-            <div className="about-stat-num">2019</div>
+            <div className="about-stat-num">2025</div>
             <div className="about-stat-label">Est. in Jaipur</div>
           </div>
         </div>
         <div>
           <span className="section-tag">Our Heritage</span>
-          <h2 className="section-title">A fort <em>reimagined</em> as Jaipur's most beautiful bar</h2>
+          <h2 className="section-title">About <em>Us</em></h2>
           <p className="section-body">
             Nestled within the weathered walls of a renovated fort in Dahmi Kalan, Stoa is not merely a restaurant —
             it is a living canvas where Rajputana grandeur converses with contemporary sophistication. Every stone,
@@ -651,7 +672,7 @@ export default function StoaLanding() {
 
       {/* ── STATS ── */}
       <div className="experience-bar">
-        {[["5+","Years of Legacy"],["50K+","Happy Guests"],["120+","Menu Items"],["4.8★","Avg. Rating"]].map(([n,l]) => (
+        {[["2+","Years of Legacy"],["10K+","Happy Guests"],["120+","Menu Items"],["4.8★","Avg. Rating"]].map(([n,l]) => (
           <div className="exp-item" key={l}>
             <span className="exp-num">{n}</span>
             <span className="exp-label">{l}</span>
@@ -662,8 +683,8 @@ export default function StoaLanding() {
       {/* ── MENU ── */}
       <section className="menu-section" id="menu">
         <div className="menu-header">
-          <span className="section-tag">Our Offerings</span>
-          <h2 className="section-title">Curated <em>flavours</em> of Rajputana</h2>
+          <span className="section-tag">Menu</span>
+          <h2 className="section-title">Our <em>Exquisite </em> Offerings</h2>
           <div className="ornament" style={{ maxWidth:360, margin:"18px auto 0" }}>
             <div className="ornament-line"/><div className="ornament-diamond"/><div className="ornament-line"/>
           </div>
@@ -694,7 +715,7 @@ export default function StoaLanding() {
         <div className="events-header">
           <div>
             <span className="section-tag">What's On</span>
-            <h2 className="section-title">Evenings <em>worth</em> living for</h2>
+            <h2 className="section-title">Upcoming <em>Events</em></h2>
           </div>
           <a href="#" className="btn-outline-dark">All Events</a>
         </div>
@@ -702,8 +723,15 @@ export default function StoaLanding() {
           {events.map((e, i) => (
             <div className="event-card" key={i}>
               <div className="event-card-img-wrap">
-                <img src={e.img} alt={e.title} style={{width:"100%",height:"100%",objectFit:"cover"}} />
-              </div>
+  <video
+    src={e.video}
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="w-full h-full object-cover"
+  />
+</div>
               <div className="event-card-body">
                 <span className="event-date-badge">{e.date}</span>
                 <h3 className="event-title">{e.title}</h3>
@@ -735,7 +763,7 @@ export default function StoaLanding() {
       <section className="reservation-section" id="reservation">
         <div className="reservation-inner">
           <span className="section-tag">Reservations</span>
-          <h2 className="section-title">Reserve your <em style={{ color:"var(--gold)" }}>table</em></h2>
+          <h2 className="section-title">Make a <em style={{ color:"var(--gold)" }}>Reservation</em></h2>
           <p className="section-body">
             Secure your evening at Jaipur's most coveted address. Tables fill quickly — we recommend booking 48 hours in advance.
           </p>
