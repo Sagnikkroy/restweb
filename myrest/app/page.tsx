@@ -44,15 +44,16 @@ const styles = `
   .nav-links a {
     font-family:'Jost',sans-serif; font-size:11px; font-weight:400;
     letter-spacing:0.2em; text-transform:uppercase;
-    color:rgba(255,255,255,0.85); text-decoration:none; transition:color 0.3s;
+    color:rgba(14, 14, 14, 0.85); text-decoration:none; transition:color 0.3s;
   }
   .navbar.scrolled .nav-links a { color:var(--stone); }
   .nav-links a:hover { color:var(--gold) !important; }
   .nav-cta {
     font-family:'Jost',sans-serif; font-size:11px; font-weight:500;
     letter-spacing:0.2em; text-transform:uppercase;
-    padding:10px 24px; border:1px solid rgba(255,255,255,0.55);
-    color:var(--warm-white); text-decoration:none; background:transparent;
+    padding:10px 24px; border:1px solid rgba(114, 91, 21, 0.93);
+    color: #1B1B1B;
+    
     cursor:pointer; transition:all 0.3s; display:inline-block;
   }
   .navbar.scrolled .nav-cta { border-color:var(--gold); color:var(--deep-brown); }
@@ -590,7 +591,7 @@ export default function StoaLanding() {
             <li key={label}><a href={href}>{label}</a></li>
           ))}
         </ul>
-        <a href="#reservation" className="nav-cta">Reserve a Table</a>
+        <a href="#reservation" className="nav-cta">Make a Reservation</a>
       </nav>
 
       {/* ── HERO ── */}
